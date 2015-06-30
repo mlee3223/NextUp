@@ -7,16 +7,29 @@
 //
 
 #import "MMAppDelegate.h"
+#import <Parse/Parse.h>
+
 
 @implementation MMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [Parse setApplicationId:@"LiHAERPccaE5iq9TdCseNt6irv8ngBneGysAuw7v"
+                  clientKey:@"NeXuG3jBb1gzef9uc7E2QYFzaPGtZ5pQtQQpNNNA"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
+}
+
+-(void)applicationDidFinishLaunching:(UIApplication *)application
+
+{
+    CLLocationManager *locationManager = [[CLLocationManager alloc]init];
+    // locationManager.distanceFilter = 500;
+    [locationManager startUpdatingLocation];
+    CLLocation *location = locationManager.location;
+    [PFImageView class];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
